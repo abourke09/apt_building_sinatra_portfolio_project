@@ -1,1 +1,8 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+#Show a single service request. Allows the logged in user to view/edit/delete
+<h1>Service Request Details</h1>
+
+<p> <%= @service_request.message %> </p>
+<br></br>
+
+<a href="/service_requests/<%=request.id%>/edit"> <%= Edit %> </a>
+<a href="/service_requests/<%=request.id%>/delete"> <%= Delete %> </a>
