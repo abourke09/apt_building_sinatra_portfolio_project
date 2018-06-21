@@ -1,4 +1,4 @@
 class ServiceRequest < ActiveRecord::Base
   belongs_to :resident
-  belongs_to :apartment_building, through: resident
+  belongs_to :building, through: resident
 end
