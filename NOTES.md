@@ -1,14 +1,14 @@
-Apartment Building Service Request App
+Building Service Request App
 
-An Apartment Building has many Residents
-  An Apartment Building has many Service Requests through Residents
+A Building has many Residents
+  A Building has many Service Requests through Residents
 
 A Resident has many Service Requests
 
 A Service Request belongs to a Resident
-  A Service Request belongs to an Apartment Building through Residents
+  A Service Request belongs to a Building through Residents
 
-
+https://stackoverflow.com/questions/4021322/belongs-to-through-associations
 
 
 
