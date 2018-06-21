@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180621185137) do
   create_table "residents", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
+    t.string   "name"
     t.integer  "apt_number"
     t.integer  "building_id"
     t.datetime "created_at",      null: false

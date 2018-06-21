@@ -1,10 +1,10 @@
 class ResidentsController < ApplicationController
 
-  #Residents' homepage (show page for individual)
+  #Residents' homepage ('all' page for individual)
   get "/residents/:slug" do
     @resident = Resident.find_by_slug(:slug)
     if logged_in?
-      erb :"/residents/show.html"
+      erb :"/residents/all.html"
     else
       redirect to "/"
     end
@@ -12,24 +12,26 @@ class ResidentsController < ApplicationController
 
   #Signup page form
   get "/residents/new" do
-    @resident = Resident.find_by_slug(:slug)
+    binding.pry
     if logged_in?
+      @resident = current_user
       redirect to "/residents/<%@resident.slug=%>"
     else
-      erb :"/residents/new.html"
+      erb :"/residents/signup.html"
     end
   end
 
   #Signup page- POST action
   post "/residents" do
-    if params[:username] == "" || params[:password] == "" || params[:name] == "" || params[:apartment_number] == ""
+    if params[:username] == "" || params[:password] == "" || params[:name] == "" || params[:building] == "" || params[:apartment_number] == ""
       redirect to "/residents/new"
     else
       @resident = Resident.create(
         :username => params["username"],
         :password => params["password"],
         :name => params["name"],
-        :apartment_number => params["apartment_number"]
+        :building_id => params["building"]["id"]
+        :apt_number => params["apartment_number"]
       )
       @resident.save
       session[:user_id] = @resident.id
