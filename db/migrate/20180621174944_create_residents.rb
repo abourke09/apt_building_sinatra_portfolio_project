@@ -3,6 +3,7 @@ class CreateResidents < ActiveRecord::Migration
     create_table :residents do |t|
       t.string "username"
       t.string "password_digest"
+      t.string "name"
       t.integer "apt_number"
       t.integer "building_id"
       t.timestamps null: false
