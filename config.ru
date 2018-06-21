@@ -6,6 +6,7 @@ end
 
 use Rack::MethodOverride
 run ApplicationController
+use BuildingsController
 use ServiceRequestsController
 use ResidentsController
 use ApartmentBuildingsController
