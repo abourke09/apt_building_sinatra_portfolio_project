@@ -4,7 +4,7 @@ class CreateResidents < ActiveRecord::Migration
       t.string "username"
       t.string "password_digest"
       t.string "name"
-      t.integer "apt_number"
+      t.integer "apartment_number"
       t.integer "building_id"
       t.timestamps null: false
     end
