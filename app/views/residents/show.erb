@@ -1,6 +1,4 @@
-#Show a list of the logged in resident's service requests
 <h1>Welcome, <%= @resident.name %>!</h1>
-<h4><a href="/logout">Log Out</a></h4>
 
 <h2>Service Requests</h2>
 
@@ -8,3 +6,6 @@
   <%=index%>. <a href="/service_requests/<%=request.id%>"><%=request.message[0, 20]%>...</a>
   <br></br>
 <% end %>
+
+<h4><a href="/service_requests/new">New Service Request</a></h4>
+<h4><a href="/logout">Log Out</a></h4>
