@@ -20,7 +20,6 @@ class ResidentsController < ApplicationController
     end
   end
 
-
   #Signup page- POST action
   post "/residents" do
     if params[:username] == "" || params[:password] == "" || params[:name] == "" || params[:building] == "" || params[:apartment_number] == ""

@@ -1,28 +1,34 @@
 class ServiceRequestsController < ApplicationController
 
-  # GET: /service_requests
-  get "/service_requests" do
-    erb :"/service_requests/index.html"
-  end
-
-  # GET: /service_requests/new
+  #New Service Request
   get "/service_requests/new" do
-    erb :"/service_requests/new.html"
+    if logged_in?
+      erb :"/service_requests/new"
+    else
+      redirect to "/login"
+    end
   end
 
-  # POST: /service_requests
+  #POST New Service Request Form
   post "/service_requests" do
-    redirect "/service_requests"
+    if params[:message] == ""
+      redirect to "/service_requests/new"
+    else
+      @service_request = ServiceRequest.create(:message => params["message"])
+      @service_request.resident_id = current_user.id
+      @service_request.save
+      redirect to "/service_request/#{@service_request.id}"
+    end
   end
 
   # GET: /service_requests/5
   get "/service_requests/:id" do
-    erb :"/service_requests/show.html"
+    erb :"/service_requests/show"
   end
 
   # GET: /service_requests/5/edit
   get "/service_requests/:id/edit" do
-    erb :"/service_requests/edit.html"
+    erb :"/service_requests/edit"
   end
 
   # PATCH: /service_requests/5
