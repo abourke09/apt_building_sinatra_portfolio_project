@@ -29,11 +29,12 @@ class ResidentsController < ApplicationController
         :username => params["username"],
         :password => params["password"],
         :name => params["name"],
-        :apt_number => params[apartment_number],
-        :building_id => params["building"][id],
+        :apt_number => params["apartment_number"],
+        :building_id => params["building"],
       )
       @resident.save
       session[:user_id] = @resident.id
+      binding.pry
       redirect to "/residents/#{@resident.slug}"
     end
   end

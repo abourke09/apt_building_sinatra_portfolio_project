@@ -9,7 +9,7 @@
   <br></br>
 
   <label>Password:</label>
-  <input type="text" name="password">
+  <input type="password" name="password">
   <br></br>
 
   <label>Name:</label>
@@ -17,7 +17,10 @@
   <br></br>
 
   <label>Building:</label>
-  <input type="text" name="building">
+  <br>
+  <%Building.all.each do |building|%>
+    <input type="radio" name="building" value="<%=building.id%>"> <%=building.name%> <br>
+  <%end%>
   <br></br>
 
   <label>Apartment #:</label>
