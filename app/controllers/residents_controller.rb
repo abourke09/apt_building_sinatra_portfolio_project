@@ -6,15 +6,15 @@ class ResidentsController < ApplicationController
       @resident = current_user
       redirect to "/residents/#{@resident.slug}"
     else
-      erb :"/residents/signup.html"
+      erb :"/residents/signup"
     end
   end
 
-  #Residents' homepage ('all' page for individual)
+  #Residents' homepage, show page
   get "/residents/:slug" do
-    @resident = Resident.find_by_slug(:slug)
+    @resident = current_user
     if logged_in?
-      erb :"/residents/all.html"
+      erb :"/residents/show"
     else
       redirect to "/"
     end
@@ -30,8 +30,8 @@ class ResidentsController < ApplicationController
         :username => params["username"],
         :password => params["password"],
         :name => params["name"],
-        :building_id => params["building"]["id"]
-    #    :apt_number => params["apartment_number"]
+        :apt_number => params[apartment_number],
+        :building_id => params["building"][id],
       )
       @resident.save
       session[:user_id] = @resident.id
@@ -45,7 +45,7 @@ class ResidentsController < ApplicationController
       if logged_in?
         redirect to "/residents/#{@resident.slug}"
       else
-        erb :"/residents/login.html"
+        erb :"/residents/login"
       end
     end
 
