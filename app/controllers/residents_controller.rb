@@ -12,8 +12,9 @@ class ResidentsController < ApplicationController
 
   #Residents' homepage, show page
   get "/residents/:slug" do
-    @resident = current_user
     if logged_in?
+      binding.pry
+      @resident = current_user
       erb :"/residents/show"
     else
       redirect to "/"
@@ -34,15 +35,14 @@ class ResidentsController < ApplicationController
       )
       @resident.save
       session[:user_id] = @resident.id
-      binding.pry
-      redirect to "/residents/#{@resident.slug}"
+ex      redirect to "/residents/#{@resident.slug}"
     end
   end
 
   #Login Page
     get '/login' do
-      @resident = Resident.find_by_slug(:slug)
       if logged_in?
+        @resident = current_user
         redirect to "/residents/#{@resident.slug}"
       else
         erb :"/residents/login"
