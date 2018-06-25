@@ -1,0 +1,11 @@
+<h1>Welcome, <%= @resident.name %>!</h1>
+
+<h2>Service Requests</h2>
+
+<% @resident.service_requests.each_with_index do |request, index| %>
+  <%=index%>. <a href="/service_requests/<%=request.id%>"><%=request.message[0, 20]%>...</a>
+  <br></br>
+<% end %>
+
+<h4><a href="/service_requests/new">New Service Request</a></h4>
+<h4><a href="/logout">Log Out</a></h4>
