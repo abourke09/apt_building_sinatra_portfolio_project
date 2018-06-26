@@ -3,13 +3,17 @@
     <h2>Apartment Building Service Request Portal</h2>
 
     <div class="content">
-      <p>Welcome to the service request portal for your apartment building. Once you create an account, you can use this portal to send a service request to your building manager.</p>
+      <p>Welcome to the service request portal for your apartment building. You can use this portal to send a service request to your building manager.</p>
       <p>Is your kitchen faucet leaky? Go ahead and enter a service request and your manager will address the problem for you. And just in case there are any changes to the situation, you can edit and delete your service requests as well. </p>
 
-      <h3><a href="/login">Login Page</a></h3>
-
-      <h3><a href="/residents/new">Signup Page</a></h3>
-
+      <% if logged_in? %>
+        <p><strong>Welcome, <%=current_user.name%>! Navigate to your homepage by clicking the link below.</strong></p>
+        <h3><a href="/residents/<%=current_user.slug%>">User Homepage</a></h3>
+      <% else %>
+        <p><strong>Please log in to your account or sign up for one below.</strong></p>
+        <h3><a href="/login">Login Page</a></h3>
+        <h3><a href="/residents/new">Signup Page</a></h3>
+      <% end %>
     </div>
 
   </div>
