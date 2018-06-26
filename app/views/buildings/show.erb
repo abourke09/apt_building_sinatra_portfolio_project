@@ -1,1 +1,6 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>Apartment Building: <%=@building.name%></h1>
+
+<h2><ul>Residents:</ul></h2>
+<%@building.residents.each do |resident| { %>
+<li><%=resident.username%></li>
+<%=end%>
