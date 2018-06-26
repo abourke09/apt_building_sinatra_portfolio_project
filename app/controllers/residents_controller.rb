@@ -12,9 +12,6 @@ class ResidentsController < ApplicationController
 
   #Signup page- POST action
   post "/residents" do
-    if params[:username] == "" || params[:password] == "" || params[:name] == "" || params[:building] == "" || params[:apartment_number] == ""
-      redirect to "/residents/new"
-    else
       @resident = Resident.create(
         :username => params["username"],
         :password => params["password"],
@@ -25,7 +22,6 @@ class ResidentsController < ApplicationController
       @resident.save
       session[:user_id] = @resident.id
       redirect to "/residents/#{@resident.slug}"
-    end
   end
 
   #Login Page

@@ -11,14 +11,10 @@ class ServiceRequestsController < ApplicationController
 
   #POST New Service Request Form
   post "/service_requests" do
-    if params[:message] == ""
-      redirect to "/service_requests/new"
-    else
       @service_request = ServiceRequest.create(:message => params["message"])
       @service_request.resident_id = current_user.id
       @service_request.save
       redirect to "/service_request/#{@service_request.id}"
-    end
   end
 
   # GET: /service_requests/5
