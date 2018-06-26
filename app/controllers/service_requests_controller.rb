@@ -14,25 +14,30 @@ class ServiceRequestsController < ApplicationController
       @service_request = ServiceRequest.create(:message => params["message"])
       @service_request.resident_id = current_user.id
       @service_request.save
-      redirect to "/service_request/#{@service_request.id}"
+      redirect to "/service_requests/#{@service_request.id}"
   end
 
-  # GET: /service_requests/5
+  #SHOW a given service request
   get "/service_requests/:id" do
-    erb :"/service_requests/show"
+    if logged_in?
+      @service_request = ServiceRequest.find(params[:id])
+      erb :"/service_requests/show"
+    else
+      redirect to "/login"
+    end
   end
 
-  # GET: /service_requests/5/edit
+  #EDIT a service request
   get "/service_requests/:id/edit" do
     erb :"/service_requests/edit"
   end
 
-  # PATCH: /service_requests/5
+  #PATCH an edit of a service request
   patch "/service_requests/:id" do
     redirect "/service_requests/:id"
   end
 
-  # DELETE: /service_requests/5/delete
+  #DELETE an instance of a service request
   delete "/service_requests/:id/delete" do
     redirect "/service_requests"
   end

@@ -1,8 +1,8 @@
-#Show a single service request. Allows the logged in user to view/edit/delete
 <h1>Service Request Details</h1>
 
 <p> <%= @service_request.message %> </p>
 <br></br>
 
-<a href="/service_requests/<%=request.id%>/edit"> <%= Edit %> </a>
-<a href="/service_requests/<%=request.id%>/delete"> <%= Delete %> </a>
+<a href="/service_requests/<%=@service_request.id%>/edit"> Edit </a>
+<br></br>
+<a href="/service_requests/<%=@service_request.id%>/delete"> Delete </a>
