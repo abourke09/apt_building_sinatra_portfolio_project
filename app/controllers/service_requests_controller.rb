@@ -19,8 +19,8 @@ class ServiceRequestsController < ApplicationController
 
   #SHOW a given service request
   get "/service_requests/:id" do
-    if logged_in?
-      @service_request = ServiceRequest.find_by(id: params[:id])
+    @service_request = ServiceRequest.find_by(id: params[:id])
+    if current_user == @service_request.resident
       erb :"/service_requests/show"
     else
       redirect to "/login"
@@ -29,8 +29,8 @@ class ServiceRequestsController < ApplicationController
 
   #EDIT a service request
   get "/service_requests/:id/edit" do
-    if logged_in?
-      @service_request = ServiceRequest.find_by(id: params[:id])
+    @service_request = ServiceRequest.find_by(id: params[:id])
+    if current_user == @service_request.resident
       erb :"/service_requests/edit"
     else
       redirect to "/login"

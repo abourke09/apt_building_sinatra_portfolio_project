@@ -37,8 +37,6 @@ class ResidentsController < ApplicationController
 
   #Login Page- POST action
     post '/login' do
-      binding.pry
-
       @resident = Resident.find_by(username: params[:username])
       if @resident && @resident.authenticate(params[:password])
         session[:user_id] = @resident.id
@@ -52,7 +50,7 @@ class ResidentsController < ApplicationController
     #Residents' homepage, show page
     get "/residents/:slug" do
       @resident = Resident.find_by_slug(params[:slug])
-      if logged_in?
+      if current_user == @resident
         erb :"/residents/show"
       else
         redirect to "/"
