@@ -1,3 +1,13 @@
+<% if flash.has?(:message) %>
+  <% errors = flash[:message]%>
+  <%= "Sorry, it looks like something went wrong. Please correct the error(s) listed below:" %>
+  <br>
+  <% errors.each do |key, value| %>
+    <%="#{key}: #{value.shift}" %>
+    <br>
+  <% end %>
+<% end %>
+
 <h1>Sign Up</h1>
 
 <form action="/residents" method="POST">

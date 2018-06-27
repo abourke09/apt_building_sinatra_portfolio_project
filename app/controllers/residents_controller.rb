@@ -1,3 +1,6 @@
+require 'sinatra/base'
+require 'rack-flash'
+
 class ResidentsController < ApplicationController
 
   #Signup page form
@@ -19,7 +22,7 @@ class ResidentsController < ApplicationController
       #flash[:message] = "Sorry, it looks like that usename is already taken, or you didn't fill in something."
       #redirect to "/residents/new"
     #end
-    binding.pry
+    #binding.pry
       @resident = Resident.create(
         :username => params["username"],
         :password => params["password"],
@@ -27,9 +30,15 @@ class ResidentsController < ApplicationController
         :apt_number => params["apartment_number"],
         :building_id => params["building"],
       )
-      @resident.save
-      session[:user_id] = @resident.id
-      redirect to "/residents/#{@resident.slug}"
+      if @resident.errors
+        flash[:message] = @resident.errors.messages
+        @buildings = Building.all
+        erb :"/residents/signup"
+      else
+        @resident.save
+        session[:user_id] = @resident.id
+        redirect to "/residents/#{@resident.slug}"
+      end
   end
 
   #Login Page
