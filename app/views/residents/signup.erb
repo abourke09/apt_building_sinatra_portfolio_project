@@ -18,7 +18,7 @@
 
   <label>Building:</label>
   <br>
-  <%Building.all.each do |building|%>
+  <%@buildings.each do |building|%>
     <input type="radio" name="building" value="<%=building.id%>"> <%=building.name%> <br>
   <%end%>
   <br></br>

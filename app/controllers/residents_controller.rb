@@ -6,6 +6,7 @@ class ResidentsController < ApplicationController
       @resident = current_user
       redirect to "/residents/#{@resident.slug}"
     else
+      @buildings = Building.all
       erb :"/residents/signup"
     end
   end
@@ -36,10 +37,11 @@ class ResidentsController < ApplicationController
 
   #Login Page- POST action
     post '/login' do
-      @resident = Resident.find_by(username: params[:username])
+      binding.pry
 
-      if resident && resident.authenticate(params[:password])
-        session[:user_id] = resident.id
+      @resident = Resident.find_by(username: params[:username])
+      if @resident && @resident.authenticate(params[:password])
+        session[:user_id] = @resident.id
         redirect to "/residents/#{@resident.slug}"
       else
         redirect to "/login"

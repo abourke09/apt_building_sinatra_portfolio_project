@@ -20,7 +20,7 @@ class ServiceRequestsController < ApplicationController
   #SHOW a given service request
   get "/service_requests/:id" do
     if logged_in?
-      @service_request = ServiceRequest.find_by(params[:id])
+      @service_request = ServiceRequest.find_by(id: params[:id])
       erb :"/service_requests/show"
     else
       redirect to "/login"
@@ -30,7 +30,7 @@ class ServiceRequestsController < ApplicationController
   #EDIT a service request
   get "/service_requests/:id/edit" do
     if logged_in?
-      @service_request = ServiceRequest.find_by(params[:id])
+      @service_request = ServiceRequest.find_by(id: params[:id])
       erb :"/service_requests/edit"
     else
       redirect to "/login"
@@ -39,7 +39,7 @@ class ServiceRequestsController < ApplicationController
 
   #PATCH an edit of a service request
   post "/service_requests/:id" do
-    @service_request = ServiceRequest.find_by(params[:id])
+    @service_request = ServiceRequest.find_by(id: params[:id])
     @service_request.message = params["message"]
     @service_request.save
     redirect to "/service_requests/#{@service_request.id}"
@@ -47,7 +47,7 @@ class ServiceRequestsController < ApplicationController
 
   #DELETE an instance of a service request
   post "/service_requests/:id/delete" do
-    @service_request = ServiceRequest.find_by(params[:id])
+    @service_request = ServiceRequest.find_by(id: params[:id])
     if @service_request.resident_id == current_user.id
       @service_request.delete
     end
