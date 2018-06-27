@@ -1,14 +1,15 @@
 class BuildingsController < ApplicationController
 
-  # GET: /buildings
+  #Show page for all Buildings
   get "/buildings" do
+    @buildings = Building.all
     erb :"/buildings/index"
   end
 
-  # GET: /buildings/5
+  #Show page for individual Buildings
   get "/buildings/:id" do
+    @building = Building.find_by(id: params[:id])
     if logged_in?
-      @building = Building.find_by(params[:id])
       erb :"/buildings/show"
     else
       redirect to "/login"

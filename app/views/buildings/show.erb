@@ -1,6 +1,12 @@
 <h1>Apartment Building: <%=@building.name%></h1>
+<h3>Total # of Residents: <%=@building.residents.count%></h3>
+<h3>Total # of Service Requests: <%=@building.service_requests.count%></h3>
 
-<h2><ul>Residents:</ul></h2>
-<%@building.residents.each do |resident| { %>
-<li><%=resident.username%></li>
-<%=end%>
+<h3>Residents' usernames: </h3>
+<%@building.residents.each do |resident|%>
+<%=resident.username%>
+<br>
+<%end%>
+
+<br></br>
+<h3><a href="/">Homepage</a></h3>

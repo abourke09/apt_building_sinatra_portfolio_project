@@ -9,6 +9,8 @@
       <% if logged_in? %>
         <p><strong>Welcome, <%=current_user.name%>! Navigate to your homepage by clicking the link below.</strong></p>
         <h3><a href="/residents/<%=current_user.slug%>">User Homepage</a></h3>
+        <h3><a href="/buildings">All Buildings</a></h3>
+
       <% else %>
         <p><strong>Please log in to your account or sign up for one below.</strong></p>
         <h3><a href="/login">Login Page</a></h3>
