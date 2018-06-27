@@ -16,13 +16,6 @@ class ResidentsController < ApplicationController
 
   #Signup page- POST action
   post "/residents" do
-
-    #need a way to view what the error was
-    #if validation fails
-      #flash[:message] = "Sorry, it looks like that usename is already taken, or you didn't fill in something."
-      #redirect to "/residents/new"
-    #end
-    #binding.pry
       @resident = Resident.create(
         :username => params["username"],
         :password => params["password"],
@@ -54,11 +47,15 @@ class ResidentsController < ApplicationController
   #Login Page- POST action
     post '/login' do
       @resident = Resident.find_by(username: params[:username])
-      if @resident && @resident.authenticate(params[:password])
+      if params[:username].empty? || params[:password].empty?
+        flash[:message] = "Please be sure to fill out both the username and the password."
+        erb :"/residents/login"
+      elsif @resident && @resident.authenticate(params[:password])
         session[:user_id] = @resident.id
         redirect to "/residents/#{@resident.slug}"
       else
-        redirect to "/login"
+        flash[:message] = "Incorrect password, please try again."
+        erb :"/residents/login"
       end
     end
 
