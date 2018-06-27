@@ -5,7 +5,7 @@ This app allows residents of various apartment buildings to record service reque
 
 Usage
 To use this app, first enter 'git clone git@github.com:abourke09/apt_building_sinatra_portfolio_project.git'
-Next, run rake:db migrate and rake db:seed.
+Next, run bundle install, rake:db migrate, and rake db:seed.
 Finally, enter shotgun to view the app through your browser.
 
 Contributing

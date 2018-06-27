@@ -1,23 +1,9 @@
-Building Service Request App
-
-A Building has many Residents
-  A Building has many Service Requests through Residents
-
-A Resident has many Service Requests
-
-A Service Request belongs to a Resident
-  A Service Request belongs to a Building through Residents
-
-https://stackoverflow.com/questions/4021322/belongs-to-through-associations
-
-
-
-
-
-
-
-
-
+**TO-DO**
+1.  Display validation failures to user with error message (example form URL e.g. /posts/new)
+2.  Fill out this checklist. https://docs.google.com/forms/d/e/1FAIpQLSdIrS7g6y_B4dAY7HGS4yAndg9bfHuw7GmsiwA6MQXXqNrDjA/viewform?entry.237262577&entry.835010005&entry.301147721
+3.  Prepare a short video demo (narration helps!) describing how a user would interact with your working application.
+4.  Write a blog post about the project and process.
+5.  When done, submit your GitHub repo's url, a link to your video demo, and a link to your blog post in the corresponding text boxes in the right rail. Hit "I'm done" to wrap it up.
 
 **REQUIREMENTS**
 Build an MVC Sinatra Application.
@@ -25,7 +11,7 @@ Use ActiveRecord with Sinatra.
 Use Multiple Models.
 Use at least one has_many relationship on a User model and one belongs_to relationship on another model
 Must have user accounts. The user that created a given piece of content should be the only person who can modify that content
-Must have the abilty to create, read, update and destroy any instance of the resource that belongs to a user.
+Must have the ability to create, read, update and destroy any instance of the resource that belongs to a user.
 Ensure that any instance of the resource that belongs to a user can be edited or deleted only by that user.
 You should also have validations for user input to ensure that bad data isn't added to the database. The fields in your signup form should be required and the user attribute that is used to login a user should be a unique value in the DB before creating the user.
 

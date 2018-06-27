@@ -13,6 +13,13 @@ class ResidentsController < ApplicationController
 
   #Signup page- POST action
   post "/residents" do
+
+    #need a way to view what the error was
+    #if validation fails
+      #flash[:message] = "Sorry, it looks like that usename is already taken, or you didn't fill in something."
+      #redirect to "/residents/new"
+    #end
+    binding.pry
       @resident = Resident.create(
         :username => params["username"],
         :password => params["password"],
