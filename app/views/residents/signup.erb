@@ -16,18 +16,12 @@
   <input type="text" name="name">
   <br></br>
 
-<!--
   <label>Building:</label>
-<<<<<<< HEAD:app/views/residents/signup.erb
-  <input type="text" name="building_id">
-=======
   <br>
   <%Building.all.each do |building|%>
     <input type="radio" name="building" value="<%=building.id%>"> <%=building.name%> <br>
   <%end%>
->>>>>>> project-work:app/views/residents/signup.erb
   <br></br>
--->
 
   <label>Apartment #:</label>
   <input type="text" name="apartment_number">

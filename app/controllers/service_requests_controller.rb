@@ -11,33 +11,47 @@ class ServiceRequestsController < ApplicationController
 
   #POST New Service Request Form
   post "/service_requests" do
-    if params[:message] == ""
-      redirect to "/service_requests/new"
-    else
       @service_request = ServiceRequest.create(:message => params["message"])
       @service_request.resident_id = current_user.id
       @service_request.save
-      redirect to "/service_request/#{@service_request.id}"
+      redirect to "/service_requests/#{@service_request.id}"
+  end
+
+  #SHOW a given service request
+  get "/service_requests/:id" do
+    if logged_in?
+      @service_request = ServiceRequest.find_by(params[:id])
+      erb :"/service_requests/show"
+    else
+      redirect to "/login"
     end
   end
 
-  # GET: /service_requests/5
-  get "/service_requests/:id" do
-    erb :"/service_requests/show"
-  end
-
-  # GET: /service_requests/5/edit
+  #EDIT a service request
   get "/service_requests/:id/edit" do
-    erb :"/service_requests/edit"
+    if logged_in?
+      @service_request = ServiceRequest.find_by(params[:id])
+      erb :"/service_requests/edit"
+    else
+      redirect to "/login"
+    end
   end
 
-  # PATCH: /service_requests/5
-  patch "/service_requests/:id" do
-    redirect "/service_requests/:id"
+  #PATCH an edit of a service request
+  post "/service_requests/:id" do
+    @service_request = ServiceRequest.find_by(params[:id])
+    @service_request.message = params["message"]
+    @service_request.save
+    redirect to "/service_requests/#{@service_request.id}"
   end
 
-  # DELETE: /service_requests/5/delete
-  delete "/service_requests/:id/delete" do
-    redirect "/service_requests"
+  #DELETE an instance of a service request
+  post "/service_requests/:id/delete" do
+    @service_request = ServiceRequest.find_by(params[:id])
+    if @service_request.resident_id == current_user.id
+      @service_request.delete
+    end
+    redirect to "/residents/#{current_user.slug}"
   end
+
 end

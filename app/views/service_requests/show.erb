@@ -1,8 +1,14 @@
-#Show a single service request. Allows the logged in user to view/edit/delete
 <h1>Service Request Details</h1>
 
-<p> <%= @service_request.message %> </p>
-<br></br>
+<p><%= @service_request.message %> </p>
 
-<a href="/service_requests/<%=request.id%>/edit"> <%= Edit %> </a>
-<a href="/service_requests/<%=request.id%>/delete"> <%= Delete %> </a>
+<a href="/service_requests/<%=@service_request.id%>/edit"> Edit </a>
+
+<form method="post" action="/service_requests/<%=@service_request.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+
+  <input type="submit" value="Delete">
+<form>
+
+<br></br>
+<a href="/residents/<%=current_user.slug%>">User Homepage</a>
