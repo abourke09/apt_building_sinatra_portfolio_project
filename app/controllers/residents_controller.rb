@@ -71,5 +71,4 @@ class ResidentsController < ApplicationController
       end
     end
   end
-
 end
