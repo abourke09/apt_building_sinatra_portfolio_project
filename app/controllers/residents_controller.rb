@@ -18,7 +18,7 @@ class ResidentsController < ApplicationController
   post "/residents" do
       @resident = Resident.create(
         :username => params["username"],
-        :password_digest => params["password"],
+        :password => params["password"],
         :name => params["name"],
         :apartment_number => params["apartment_number"],
         :building_id => params["building"],
