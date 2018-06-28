@@ -1,6 +1,5 @@
 **TO-DO**
-1.  Display validation failures to user with error message (example form URL e.g. /posts/new)
-2.  Fill out this checklist. https://docs.google.com/forms/d/e/1FAIpQLSdIrS7g6y_B4dAY7HGS4yAndg9bfHuw7GmsiwA6MQXXqNrDjA/viewform?entry.237262577&entry.835010005&entry.301147721
+
 3.  Prepare a short video demo (narration helps!) describing how a user would interact with your working application.
 4.  Write a blog post about the project and process.
 5.  When done, submit your GitHub repo's url, a link to your video demo, and a link to your blog post in the corresponding text boxes in the right rail. Hit "I'm done" to wrap it up.
