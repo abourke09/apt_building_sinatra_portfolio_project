@@ -58,7 +58,6 @@ class ResidentsController < ApplicationController
         erb :"/residents/login"
       end
     end
-  end
 
 
     #Residents' homepage, show page
