@@ -23,7 +23,7 @@ class ResidentsController < ApplicationController
         :apartment_number => params["apartment_number"],
         :building_id => params["building"],
       )
-      if @resident.errors
+      if !@resident.errors.messages.empty?
         flash[:message] = @resident.errors.messages
         @buildings = Building.all
         erb :"/residents/signup"
