@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20180621185137) do
     t.string   "username"
     t.string   "password_digest"
     t.string   "name"
-    t.integer  "apt_number"
+    t.integer  "apartment_number"
     t.integer  "building_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "service_requests", force: :cascade do |t|
