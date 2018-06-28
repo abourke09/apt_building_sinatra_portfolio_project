@@ -69,4 +69,5 @@ class ResidentsController < ApplicationController
         redirect to "/"
       end
     end
+    
 end
