@@ -6,7 +6,7 @@ class BuildingsController < ApplicationController
       @buildings = Building.all
       erb :"/buildings/index"
     else
-      redirect to "/welcome"
+      redirect to "/"
     end
   end
 

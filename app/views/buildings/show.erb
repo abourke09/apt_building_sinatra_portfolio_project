@@ -4,8 +4,16 @@
 
 <h3>Residents' usernames: </h3>
 <%@building.residents.each do |resident|%>
-<%=resident.username%>
+<%=resident.username%>:
 <br>
+  <%if resident.service_requests.empty?%>
+    <p>No service requests at this time</p>
+  <%else%>
+  <% resident.service_requests.each.with_index(1) do |request, index | %>
+    <%=index%>. <a href="/service_requests/<%=request.id%>"><%=request.message[0, 20]%>...</a>
+  <% end %>
+  <br></br>
+  <%end%>
 <%end%>
 
 <br></br>

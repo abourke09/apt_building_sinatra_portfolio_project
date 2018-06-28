@@ -16,13 +16,8 @@ class ResidentsController < ApplicationController
 
   #Signup page- POST action
   post "/residents" do
-      @resident = Resident.create(
-        :username => params["username"],
-        :password => params["password"],
-        :name => params["name"],
-        :apt_number => params["apartment_number"],
-        :building_id => params["building"],
-      )
+      @resident = Resident.create(params)
+
       if !@resident.errors.messages.empty?
         flash[:message] = @resident.errors.messages
         @buildings = Building.all

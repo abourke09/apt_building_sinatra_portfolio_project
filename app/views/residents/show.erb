@@ -2,8 +2,8 @@
 
 <h2>Service Requests</h2>
 
-<% @resident.service_requests.each_with_index do |request, index| %>
-  <%=index + 1%>. <a href="/service_requests/<%=request.id%>"><%=request.message[0, 20]%>...</a>
+<% @resident.service_requests.each.with_index(1) do |request, index| %>
+  <%=index%>. <a href="/service_requests/<%=request.id%>"><%=request.message[0, 20]%>...</a>
   <br></br>
 <% end %>
 
