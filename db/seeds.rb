@@ -11,7 +11,7 @@ Building.create(name: "Avalon Hayes Valley")
 
 Resident.create(
   :username => "joycemom808",
-  :password => "waffles",
+  :password_digest => "waffles",
   :name => "Joyce Schwen",
   :apartment_number => 22,
   :building_id => 1,
@@ -19,7 +19,7 @@ Resident.create(
 
 Resident.create(
   :username => "oceanbob74",
-  :password => "pancakes",
+  :password_digest => "pancakes",
   :name => "Bob Bourke",
   :apartment_number => 20,
   :building_id => 2,
@@ -27,7 +27,7 @@ Resident.create(
 
 Resident.create(
   :username => "jeffyboy",
-  :password => "bagels",
+  :password_digest => "bagels",
   :name => "Jeff Bourke",
   :apartment_number => 4,
   :building_id => 2,
@@ -35,7 +35,7 @@ Resident.create(
 
 Resident.create(
   :username => "katesmgates",
-  :password => "muffins",
+  :password_digest => "muffins",
   :name => "Katie Bourke",
   :apartment_number => 8,
   :building_id => 3,
@@ -43,7 +43,7 @@ Resident.create(
 
 Resident.create(
   :username => "lauralou22",
-  :password => "crepes",
+  :password_digest => "crepes",
   :name => "Laura Jude",
   :apartment_number => 9,
   :building_id => 4,
@@ -51,7 +51,7 @@ Resident.create(
 
 Resident.create(
   :username => "dylanomilano",
-  :password => "toast",
+  :password_digest => "toast",
   :name => "Dylan Jude",
   :apartment_number => 11,
   :building_id => 5,
@@ -59,7 +59,7 @@ Resident.create(
 
 Resident.create(
   :username => "mcTT",
-  :password => "cake",
+  :password_digest => "cake",
   :name => "Marie Christine Jude",
   :apartment_number => 5,
   :building_id => 6,
@@ -67,7 +67,7 @@ Resident.create(
 
 Resident.create(
   :username => "abourke09",
-  :password => "pancakes",
+  :password_digest => "pancakes",
   :name => "Annie Bourke",
   :apartment_number => 3,
   :building_id => 7,
@@ -75,7 +75,7 @@ Resident.create(
 
 Resident.create(
   :username => "caryshark",
-  :password => "bananabread",
+  :password_digest => "bananabread",
   :name => "Cary Chiswick",
   :apartment_number => 7,
   :building_id => 7,
@@ -83,14 +83,14 @@ Resident.create(
 
 Resident.create(
   :username => "ranigirl",
-  :password => "scones",
+  :password_digest => "scones",
   :name => "Ranitri",
   :apartment_number => 14,
   :building_id => 7,
 )
 Resident.create(
   :username => "rachyrach",
-  :password => "blintz",
+  :password_digest => "blintz",
   :name => "Rachael Jude",
   :apartment_number => 99,
   :building_id => 8,
@@ -98,7 +98,7 @@ Resident.create(
 
 Resident.create(
   :username => "blakedude",
-  :password => "omlette",
+  :password_digest => "omlette",
   :name => "Blake Davis",
   :apartment_number => 22,
   :building_id => 9,
@@ -106,7 +106,7 @@ Resident.create(
 
 Resident.create(
   :username => "coolgirlmik",
-  :password => "avocadotoast",
+  :password_digest => "avocadotoast",
   :name => "Mikayla Markrich",
   :apartment_number => 1,
   :building_id => 10,
@@ -114,7 +114,7 @@ Resident.create(
 
 Resident.create(
   :username => "bigmax",
-  :password => "oatmeal",
+  :password_digest => "oatmeal",
   :name => "Max Markrich",
   :apartment_number => 1,
   :building_id => 10,
