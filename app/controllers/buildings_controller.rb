@@ -2,8 +2,12 @@ class BuildingsController < ApplicationController
 
   #Show page for all Buildings
   get "/buildings" do
-    @buildings = Building.all
-    erb :"/buildings/index"
+    if logged_in?
+      @buildings = Building.all
+      erb :"/buildings/index"
+    else
+      redirect to "/welcome"
+    end
   end
 
   #Show page for individual Buildings

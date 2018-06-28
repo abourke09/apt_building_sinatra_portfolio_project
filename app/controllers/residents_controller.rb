@@ -1,4 +1,7 @@
-showclass ResidentsController < ApplicationController
+require 'sinatra/base'
+require 'rack-flash'
+
+class ResidentsController < ApplicationController
 
   #Signup page form
   get "/residents/new" do
@@ -6,6 +9,7 @@ showclass ResidentsController < ApplicationController
       @resident = current_user
       redirect to "/residents/#{@resident.slug}"
     else
+      @buildings = Building.all
       erb :"/residents/signup"
     end
   end
@@ -19,9 +23,15 @@ showclass ResidentsController < ApplicationController
         :apt_number => params["apartment_number"],
         :building_id => params["building"],
       )
-      @resident.save
-      session[:user_id] = @resident.id
-      redirect to "/residents/#{@resident.slug}"
+      if @resident.errors
+        flash[:message] = @resident.errors.messages
+        @buildings = Building.all
+        erb :"/residents/signup"
+      else
+        @resident.save
+        session[:user_id] = @resident.id
+        redirect to "/residents/#{@resident.slug}"
+      end
   end
 
   #Login Page
@@ -35,24 +45,30 @@ showclass ResidentsController < ApplicationController
   end
 
   #Login Page- POST action
-  post '/login' do
-    @resident = Resident.find_by(username: params[:username])
-
-    if resident && resident.authenticate(params[:password])
-      session[:user_id] = resident.id
-      redirect to "/residents/#{@resident.slug}"
-    else
-      redirect to "/login"
+    post '/login' do
+      @resident = Resident.find_by(username: params[:username])
+      if params[:username].empty? || params[:password].empty?
+        flash[:message] = "Please be sure to fill out both the username and the password."
+        erb :"/residents/login"
+      elsif @resident && @resident.authenticate(params[:password])
+        session[:user_id] = @resident.id
+        redirect to "/residents/#{@resident.slug}"
+      else
+        flash[:message] = "Incorrect password, please try again."
+        erb :"/residents/login"
+      end
     end
   end
 
-  #Residents' homepage, show page
-  get "/residents/:slug" do
-    @resident = Resident.find_by_slug(params[:slug])
-    if logged_in?
-      erb :"/residents/show"
-    else
-      redirect to "/"
+
+    #Residents' homepage, show page
+    get "/residents/:slug" do
+      @resident = Resident.find_by_slug(params[:slug])
+      if current_user == @resident
+        erb :"/residents/show"
+      else
+        redirect to "/"
+      end
     end
   end
 
