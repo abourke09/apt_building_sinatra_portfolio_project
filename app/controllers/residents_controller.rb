@@ -20,7 +20,7 @@ class ResidentsController < ApplicationController
         :username => params["username"],
         :password => params["password"],
         :name => params["name"],
-        :apt_number => params["apartment_number"],
+        :apartment_number => params["apartment_number"],
         :building_id => params["building"],
       )
       if @resident.errors

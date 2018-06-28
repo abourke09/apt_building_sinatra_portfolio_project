@@ -5,7 +5,7 @@ class Resident < ActiveRecord::Base
   validates :username,  presence: true
   validates :name,  presence: true
   validates :building_id,  presence: true
-  validates :apt_number,  presence: true
+  validates :apartment_number,  presence: true
 
   def slug
     username.downcase.gsub(" ","-")
