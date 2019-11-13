@@ -14,7 +14,6 @@ class ServiceRequestsController < ApplicationController
       @service_request = ServiceRequest.create(:message => params["message"], :resident_id => current_user.id)
     #  @service_request.resident_id = current_user.id
   #    @service_request.save
-  binding.pry
       redirect to "/service_requests/#{@service_request.id}"
   end
 

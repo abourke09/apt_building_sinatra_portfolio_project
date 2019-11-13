@@ -9,3 +9,5 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_all 'app'
+
+SINATRA_ACTIVESUPPORT_WARNING=false
